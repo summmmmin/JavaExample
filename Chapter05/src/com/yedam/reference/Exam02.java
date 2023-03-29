@@ -45,7 +45,7 @@ public class Exam02 {
 		if(strVal3 == strVal1) {
 			System.out.println("strVal3과 strVal1는 메모리 주소 동일");
 		}else {
-			System.out.println("strVal3과 strVal1는 메모리 주소 다름");
+			System.out.println("strVal3과 strVal1는 메모리 주소 다름.");
 		}
 		
 		
