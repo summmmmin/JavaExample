@@ -28,6 +28,14 @@ public class ObjectExample {
 		
 		System.out.println(value2);
 	
+		
+		System.out.println();
+		Object obj = new Object();
+		System.out.println(obj.toString());
+		//재정의한 후
+		System.out.println(member.toString());
+		System.out.println(member2); //toString 생략가능
+		System.out.println(member3.toString());
 	}
 
 }

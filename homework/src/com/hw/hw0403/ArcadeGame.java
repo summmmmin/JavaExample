@@ -5,6 +5,7 @@ public class ArcadeGame implements Keypad {
 	private int mode;
 	
 	public ArcadeGame() {
+		mode = Keypad.NORMAL_MODE;
 		System.out.println("ArcadeGame 실행");
 	}
 	@Override

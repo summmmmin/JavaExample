@@ -23,5 +23,10 @@ public class Member {
 		// TODO Auto-generated method stub
 		return id.hashCode();
 	}
+
+	@Override
+	public String toString() {
+		return "Member [id=" + id + "]";
+	}
 	
 }
