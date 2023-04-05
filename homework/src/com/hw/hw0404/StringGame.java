@@ -42,9 +42,9 @@ public class StringGame {
 		if(input.length() == this.answer.length()) {
 			for(int i=0; i<this.answer.length(); i++) {
 				if(input.charAt(i) == this.answer.charAt(i)) {
-					checkstr += "O";
+					checkstr += "O ";
 				}else {
-					checkstr += "X";
+					checkstr += "X ";
 				}
 			}
 			if(checkstr.contains("X")) {
