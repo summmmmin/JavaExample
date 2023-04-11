@@ -3,15 +3,18 @@ package com.yedam.exe;
 import java.util.Scanner;
 
 import com.yedam.member.MemberService;
+import com.yedam.menu.MenuService;
+import com.yedam.sale.SaleService;
 import com.yedam.store.StoreService;
 
 public class ManageMent {
 	Scanner sc = new Scanner(System.in);
 	int menuNo = 0;
 	boolean run = true;
-	MemberService ms = new MemberService();
-	StoreService ss = new StoreService();
-	
+	MemberService member = new MemberService();
+	StoreService store = new StoreService();
+	MenuService menus = new MenuService();
+	SaleService sale = new SaleService();
 	public ManageMent() {
 		storeJob();
 	}
@@ -27,13 +30,13 @@ public class ManageMent {
 						System.out.println("메뉴선택> ");
 						int menu = Integer.parseInt(sc.next());
 						if(menu == 1) {
-							ms.getmember();
+							member.getmember();
 						}else if(menu == 2) {
 							System.out.println("1.비밀번호 | 2.이름 | 3.전화번호 | 4.주소");
 							int menuNo = Integer.parseInt(sc.next());
-							ms.memberUpdate(MemberService.memberInfo.getMemberId(), menuNo);
+							member.memberUpdate(MemberService.memberInfo.getMemberId(), menuNo);
 						}else if(menu == 3) {
-							ms.memberDelete(MemberService.memberInfo.getMemberId());
+							member.memberDelete(MemberService.memberInfo.getMemberId());
 							run = false;
 							break;
 						}else if(menu == 4) {
@@ -42,16 +45,18 @@ public class ManageMent {
 					}
 					break;
 				case 2:
+					menus.getMenuList();
 					break;
 				case 3:
+					sale.menuSelec();
 					break;
 				case 4:
-					ss.getStore();
+					store.getStore();
 					break;
 				case 5:
 					break;
 				case 6:
-					ms.logout();
+					member.logout();
 					run = false;
 					break;
 				}
@@ -63,17 +68,17 @@ public class ManageMent {
 						System.out.println("메뉴선택> ");
 						int menu = Integer.parseInt(sc.next());
 						if(menu == 1) {
-							ms.getMemberList();
+							member.getMemberList();
 						}else if(menu == 2) {
 							System.out.print("수정할 회원 아이디>");
 							String memberId = sc.next();
 							System.out.println("1.비밀번호 | 2.이름 | 3.전화번호 | 4.주소 | 5.등급");
 							int menuNo = Integer.parseInt(sc.next());
-							ms.memberUpdate(memberId, menuNo);
+							member.memberUpdate(memberId, menuNo);
 						}else if(menu == 3) {
 							System.out.print("탈퇴시킬 회원 아이디> ");
 							String memberId = sc.next();
-							ms.memberDelete(memberId);
+							member.memberDelete(memberId);
 						}else if(menu == 4) {
 							break;
 						}
@@ -84,6 +89,22 @@ public class ManageMent {
 				case 3:
 					break;
 				case 4:
+					while(true) {
+						System.out.println("1.조회 | 2.추가 | 3.수정 | 4.삭제 | 5.나가기");
+						System.out.println("메뉴선택> ");
+						int menu = Integer.parseInt(sc.next());
+						if(menu == 1) {
+							menus.getMenuList();
+						}else if(menu == 2) {
+							menus.menuAdd();
+						}else if(menu == 3) {
+							menus.menuUpdate();
+						}else if(menu == 4) {
+							menus.menuDelete();
+						}else if(menu == 5) {
+							break;
+						}
+					}
 					break;
 				case 5:
 					while(true) {
@@ -91,11 +112,11 @@ public class ManageMent {
 						System.out.println("메뉴선택> ");
 						int menu = Integer.parseInt(sc.next());
 						if(menu == 1) {
-							ss.getStore();
+							store.getStore();
 						}else if(menu == 2) {
-							ss.storeUpdate();
+							store.storeUpdate();
 						}else if(menu == 3) {
-							ss.storeDelete();
+							store.storeDelete();
 						}else if(menu == 4) {
 							break;
 						}						
@@ -104,7 +125,7 @@ public class ManageMent {
 				case 6:
 					break;
 				case 7:
-					ms.logout();
+					member.logout();
 					run = false;
 					break;
 				}
