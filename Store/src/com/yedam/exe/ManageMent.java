@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.yedam.member.MemberService;
 import com.yedam.menu.MenuService;
+import com.yedam.review.ReviewService;
 import com.yedam.sale.SaleService;
 import com.yedam.store.StoreService;
 
@@ -15,6 +16,7 @@ public class ManageMent {
 	StoreService store = new StoreService();
 	MenuService menus = new MenuService();
 	SaleService sale = new SaleService();
+	ReviewService review = new ReviewService();
 	public ManageMent() {
 		storeJob();
 	}
@@ -48,12 +50,31 @@ public class ManageMent {
 					menus.getMenuList();
 					break;
 				case 3:
-					sale.menuSelec();
+					while(true) {
+						System.out.println("1.메뉴선택 | 2.결제 | 3.주문취소 | 4.주문내역 | 5.나가기");
+						System.out.println("메뉴선택> ");
+						int menu = Integer.parseInt(sc.next());
+						if(menu == 1) {
+							menus.getMenu();
+							sale.menuSelec();
+						}else if(menu == 2) {
+							sale.getSaleAddList();
+							sale.saleAdd();
+						}else if(menu == 3) {
+							sale.saleCancel();
+						}else if(menu == 4) {
+							sale.getSale();
+						}else if(menu == 5) {
+							sale.saleDelete();
+							break;
+						}
+					}
 					break;
 				case 4:
 					store.getStore();
 					break;
 				case 5:
+					review.getReviewList();
 					break;
 				case 6:
 					member.logout();
@@ -81,12 +102,31 @@ public class ManageMent {
 							member.memberDelete(memberId);
 						}else if(menu == 4) {
 							break;
+						}else {
+							System.out.println("잘못입력하였습니다.");
 						}
 					}
 					break;
 				case 2:
+					while(true) {
+						System.out.println("1.조회 | 2.접수 | 3.취소 | 4.나가기");
+						System.out.println("메뉴선택> ");
+						int menu = Integer.parseInt(sc.next());
+						if(menu == 1) {
+							sale.getSaleList();
+						}else if(menu == 2) {
+							sale.saleOrder();
+						}else if(menu == 3) {
+							sale.saleCancel();
+						} else if(menu == 4) {
+							break;
+						}else {
+							System.out.println("잘못입력하였습니다.");
+						}
+					}
 					break;
 				case 3:
+					sale.getDaySale();
 					break;
 				case 4:
 					while(true) {
@@ -103,6 +143,8 @@ public class ManageMent {
 							menus.menuDelete();
 						}else if(menu == 5) {
 							break;
+						}else {
+							System.out.println("잘못입력하였습니다.");
 						}
 					}
 					break;
@@ -119,7 +161,9 @@ public class ManageMent {
 							store.storeDelete();
 						}else if(menu == 4) {
 							break;
-						}						
+						}	else {
+							System.out.println("잘못입력하였습니다.");
+						}					
 					}
 					break;
 				case 6:
@@ -127,7 +171,7 @@ public class ManageMent {
 				case 7:
 					member.logout();
 					run = false;
-					break;
+					break;				
 				}
 			}
 		}

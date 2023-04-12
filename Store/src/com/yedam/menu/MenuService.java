@@ -88,17 +88,16 @@ public class MenuService {
 	//주문-메뉴선택
 	public void getMenu(){
 		List<MenuDTO> list = MenuDAO.getInstance().getMenuList();
+		System.out.println("메뉴번호\t|\t메뉴이름\t|\t메뉴가격");
 		for(int i=0; i<list.size(); i++) {
-			System.out.println("메뉴번호 : "+list.get(i).getMenuId());
-			System.out.println("메뉴이름 : "+list.get(i).getMenuName());
-			System.out.println("메뉴가격 : "+list.get(i).getMenuPrice());
-			System.out.println("--------------------------------------");
+			System.out.println(list.get(i).getMenuId()+"\t \t"+list.get(i).getMenuName()+"\t \t"+list.get(i).getMenuPrice());
 		}
-		for(int i=0; i<list.size(); i++) {
-			System.out.println(list.get(i).getMenuId()+":"+list.get(i).getMenuName()+"|");
-			if(i%5==4) {
-				System.out.println();
-			}
-		}
+		System.out.println("-------------------------------------------");
+//		for(int i=0; i<list.size(); i++) {
+//			System.out.println(list.get(i).getMenuId()+":"+list.get(i).getMenuName()+"|");
+//			if(i%5==4) {
+//				System.out.println();
+//			}
+//		}
 	}
 }
