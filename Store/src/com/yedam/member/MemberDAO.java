@@ -133,4 +133,54 @@ public class MemberDAO extends DAO{
 		}
 		return result;
 	}
+	
+	//회원가입
+	public int memberAdd(MemberDTO member) {
+		int result =0;
+		try {
+			conn();
+			String sql = "insert into member(member_id, member_pw, member_name, member_phone, member_addr) values(?,?,?,?,?)";
+			
+			pstmt = conn.prepareCall(sql);
+			pstmt.setString(1, member.getMemberId());
+			pstmt.setString(2, member.getMemberPw());
+			pstmt.setString(3, member.getMemberName());
+			pstmt.setString(4, member.getMemberPhone());
+			pstmt.setString(5, member.getMemberAddr());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			disconn();
+		}
+		
+		return result;
+	}
+	//아이디중복체크
+	public MemberDTO getMemberId(String memberId) {
+		MemberDTO member = null;
+		try {
+			conn();
+			String sql = "select count(member_id)\r\n"
+					+ "from member\r\n"
+					+ "where member_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				member = new MemberDTO();
+				
+				member.setCount(rs.getInt("count(member_id)"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			disconn();
+		}
+		return member;
+	}
 }

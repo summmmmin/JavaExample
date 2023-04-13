@@ -74,8 +74,8 @@ public class MenuService {
 	
 	//삭제
 	public void menuDelete() {
-		System.out.print("삭제할 메뉴번호> ");
-		int menuId = Integer.parseInt(sc.next());
+		System.out.println("삭제할 메뉴번호> ");
+		int menuId = Integer.parseInt(sc.nextLine());
 		
 		int result = MenuDAO.getInstance().menuDelete(menuId);
 		if(result > 0) {

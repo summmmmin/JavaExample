@@ -16,7 +16,7 @@ public class StoreService {
 	//가게정보수정
 	public void storeUpdate() {
 		StoreDTO store = new StoreDTO();
-		System.out.print("1.가게이름 | 2.전화번호 | 3.주소 | 4.영업시간");
+		System.out.println("1.가게이름 | 2.전화번호 | 3.주소 | 4.영업시간");
 		int menuNo = Integer.parseInt(sc.nextLine());
 		System.out.print("수정내용>");
 		String val = sc.next();
@@ -43,7 +43,7 @@ public class StoreService {
 	//가게정보삭제
 	public void storeDelete() {
 		StoreDTO store = new StoreDTO();
-		System.out.print("1.가게이름 | 2.전화번호 | 3.주소 | 4.영업시간");
+		System.out.println("1.가게이름 | 2.전화번호 | 3.주소 | 4.영업시간");
 		int menuNo = Integer.parseInt(sc.nextLine());
 		int result = 0;
 		if(menuNo == 1) {

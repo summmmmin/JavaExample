@@ -190,5 +190,16 @@ public class SaleService {
 		}
 	}
 	
+	//리뷰작성 주문번호
+	public void getSalereview() {
+		List<SaleDTO> list = SaleDAO.getInstance().getSale(MemberService.memberInfo.getMemberId());
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).getSaleConfirm().equals("주문완료")) {				
+				System.out.println("주문번호: "+list.get(i).getSaleId());
+				System.out.println("주문일자: "+list.get(i).getSaleDate());
+				System.out.println("_______________________________________________");
+			}
+		}
+	}
 	
 }

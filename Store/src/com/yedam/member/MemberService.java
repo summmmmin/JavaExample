@@ -41,6 +41,180 @@ public class MemberService {
 	}
 	
 	//회원가입
+//	public void memberAdd() {
+//		MemberDTO member = new MemberDTO();
+//		//아이디
+//		while(true) {
+//			System.out.print("아이디(4자이상)>");
+//			String id = sc.next();
+//			if(id.length()>=4){
+//				while(true) {
+//					if(MemberDAO.getInstance().getMemberId(id).getCount() ==0 ) {
+//						System.out.print("비밀번호(4자이상)>");
+//						String pw = sc.next();
+//						if(pw.length()>=4) {
+//							while(true) {
+//								System.out.print("비밀번호 확인>");
+//								String pwcheck = sc.next();
+//								if(pwcheck.equals(pw)) {
+//									System.out.print("이름>");
+//									String name = sc.next();
+//									System.out.print("번호>");
+//									String phone = sc.next();
+//									System.out.print("주소>");
+//									String addr = sc.next();
+//									
+//									member.setMemberId(id);
+//									member.setMemberPw(pw);
+//									member.setMemberName(name);
+//									member.setMemberPhone(phone);
+//									member.setMemberAddr(addr);
+//									
+//									int result = MemberDAO.getInstance().memberAdd(member);
+//									if(result == 1) {
+//										System.out.println("회원가입 완료");
+//									}else {
+//										System.out.println("회원가입 실패");
+//									}
+//									break;
+//								}else {
+//									System.out.println("비밀번호가 다릅니다.");
+//								}
+//							}
+//							break;
+//						}else {
+//							System.out.println("4자이상 입력하세요.");
+//						}
+//						break;
+//					}
+//				}else {
+//					System.out.println("중복하는 아이디입니다. 다시입력하세요.");
+//				}break;		
+//			}else {
+//				System.out.println("4자이상 입력하세요.");
+//			}
+//			
+//		}
+//	}
+	
+//	public void memberAdd() {
+//		MemberDTO member = new MemberDTO();
+//		while(true) {
+//			System.out.print("아이디(4자이상)>");
+//			String id = sc.next();
+//			if(id.length()>=4){
+//				while(true) {
+//					if(MemberDAO.getInstance().getMemberId(id).getCount() ==0 ) {
+//						System.out.print("비밀번호(4자이상)>");
+//						String pw = sc.next();
+//						while(true) {
+//							if(pw.length()>=4) {
+//								while(true) {
+//									System.out.print("비밀번호 확인>");
+//									String pwcheck = sc.next();
+//									if(pwcheck.equals(pw)) {
+//										System.out.print("이름>");
+//										String name = sc.next();
+//										System.out.print("번호>");
+//										String phone = sc.next();
+//										System.out.print("주소>");
+//										String addr = sc.next();
+//										
+//										member.setMemberId(id);
+//										member.setMemberPw(pw);
+//										member.setMemberName(name);
+//										member.setMemberPhone(phone);
+//										member.setMemberAddr(addr);
+//										
+//										int result = MemberDAO.getInstance().memberAdd(member);
+//										if(result == 1) {
+//											System.out.println("회원가입 완료");
+//										}else {
+//											System.out.println("회원가입 실패");
+//										}
+//										break;
+//									}else {
+//										System.out.println("비밀번호가 다릅니다.");
+//									}
+//								}
+//								break;
+//							}else {
+//								System.out.println("4자이상 입력하세요.");
+//							}
+//						}
+//						break;
+//					}else {
+//						System.out.println("중복하는 아이디입니다. 다시입력하세요.");
+//						break;
+//					}
+//				}
+//				break;
+//			}else {
+//				System.out.println("4자이상 입력하세요.");
+//			}
+//		}
+//	}
+	
+	public void memberAdd() {
+		MemberDTO member = new MemberDTO();
+		boolean run = true;
+		while(run) {
+			System.out.print("아이디(4자이상)>");
+			String id = sc.next();
+			if(id.length()>=4){
+				while(run) {
+					if(MemberDAO.getInstance().getMemberId(id).getCount() ==0 ) {
+						System.out.print("비밀번호(4자이상)>");
+						String pw = sc.next();
+						while(run) {
+							if(pw.length()>=4) {
+								while(run) {
+									System.out.print("비밀번호 확인>");
+									String pwcheck = sc.next();
+									if(pwcheck.equals(pw)) {
+										System.out.print("이름>");
+										String name = sc.next();
+										System.out.print("번호>");
+										String phone = sc.next();
+										System.out.print("주소>");
+										String addr = sc.next();
+										
+										member.setMemberId(id);
+										member.setMemberPw(pw);
+										member.setMemberName(name);
+										member.setMemberPhone(phone);
+										member.setMemberAddr(addr);
+										
+										int result = MemberDAO.getInstance().memberAdd(member);
+										if(result == 1) {
+											System.out.println("회원가입 완료");
+										}else {
+											System.out.println("회원가입 실패");
+										}
+										run = false;
+									}else {
+										System.out.println("비밀번호가 다릅니다.");
+										break;
+									}
+								}
+								
+							}else {
+								System.out.println("4자이상 입력하세요.");
+								break;
+							}
+						}
+						
+					}else {
+						System.out.println("중복하는 아이디입니다. 다시입력하세요.");
+						break;
+					}
+				}
+			
+			}else {
+				System.out.println("4자이상 입력하세요.");
+			}
+		}
+	}
 	
 	//회원정보조회(사용자)
 	public void getmember() {

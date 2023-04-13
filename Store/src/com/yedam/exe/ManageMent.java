@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.yedam.member.MemberService;
 import com.yedam.menu.MenuService;
+import com.yedam.review.AnswerService;
 import com.yedam.review.ReviewService;
 import com.yedam.sale.SaleService;
 import com.yedam.store.StoreService;
@@ -17,6 +18,7 @@ public class ManageMent {
 	MenuService menus = new MenuService();
 	SaleService sale = new SaleService();
 	ReviewService review = new ReviewService();
+	AnswerService answer = new AnswerService();
 	public ManageMent() {
 		storeJob();
 	}
@@ -167,6 +169,23 @@ public class ManageMent {
 					}
 					break;
 				case 6:
+					while(true) {
+						answer.getReviewList();
+						System.out.println("1.답글작성 | 2.답글수정 | 3.답글삭제 | 4.리뷰삭제 | 5.나가기");
+						System.out.println("메뉴선택> ");
+						int menu = Integer.parseInt(sc.next());
+						if(menu == 1) {
+							answer.answerAdd();
+						}else if(menu ==2) {
+							answer.answerUpdate();
+						}else if(menu == 3) {
+							answer.answerDelete();
+						}else if(menu == 4) {
+							answer.reviewDelete();
+						}else if(menu == 5) {
+							break;
+						}
+					}
 					break;
 				case 7:
 					member.logout();

@@ -17,4 +17,6 @@ public class MemberDTO {
 	private String memberName;
 	private String memberPhone;
 	private String memberAddr;
+	
+	private int count;
 }

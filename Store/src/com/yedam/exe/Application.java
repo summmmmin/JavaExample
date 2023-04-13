@@ -20,7 +20,7 @@ public class Application {
 			menuNo = Integer.parseInt(sc.next());
 			
 			if(menuNo == 1) {
-				
+				ms.memberAdd();
 			}else if(menuNo == 2) {
 				ms.login();
 				if(MemberService.memberInfo != null) {
